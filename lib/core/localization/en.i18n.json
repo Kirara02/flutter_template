@@ -1,0 +1,66 @@
+{
+  "login": {
+    "title": "Welcome Back",
+    "subtitle": "Please sign in to continue",
+    "usernameLabel": "Username",
+    "usernameHint": "Enter your username",
+    "passwordLabel": "Password",
+    "passwordHint": "Enter your password",
+    "button": "Sign In",
+    "errorEmpty": "This field cannot be empty"
+  },
+  "home": {
+    "title": "Home",
+    "greeting": "Hello, ${name}!",
+    "logout": "Logout"
+  },
+  "more": {
+    "title": "More",
+    "settings": "Settings",
+    "settingsSubtitle": "General and Appearance settings",
+    "about": "About",
+    "aboutSubtitle": "App version and info"
+  },
+  "about": {
+    "title": "About",
+    "descriptionTitle": "Description",
+    "descriptionSubtitle": "A modern Flutter application built with clean architecture and Riverpod.",
+    "developedByTitle": "Developed by",
+    "developedBySubtitle": "Codename Antigravity",
+    "copyrightTitle": "Copyright",
+    "copyrightSubtitle": "© 2024 Codename Antigravity. All rights reserved.",
+    "viewLicenses": "View Licenses",
+    "legalese": "© 2024 Codename Antigravity",
+    "version": "Version ${version} (${build})"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "appearance": "Appearance",
+    "language": "Language",
+    "languageIndonesian": "Indonesian",
+    "languageEnglish": "English",
+    "theme": "Theme Mode",
+    "trueBlack": "Pure black dark mode",
+    "trueBlackSubtitle": "Use pure black background in dark mode",
+    "themeScheme": "Theme Scheme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "common": {
+    "appTitle": "Template App",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "success": "Success",
+    "cancel": "Cancel",
+    "logout": "Logout",
+    "search": "Search...",
+    "dialog": {
+      "logoutTitle": "Logout",
+      "logoutContent": "Are you sure you want to logout?",
+      "exitTitle": "Exit App",
+      "exitContent": "Are you sure you want to exit the app?"
+    }
+  }
+}

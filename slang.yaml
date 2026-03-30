@@ -1,0 +1,7 @@
+base_locale: en
+fallback_strategy: base_locale
+input_directory: lib/core/localization
+input_file_pattern: ".i18n.json"
+output_directory: lib/core/localization
+output_file_pattern: ".g.dart"
+string_interpolation: braces

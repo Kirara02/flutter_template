@@ -1,0 +1,66 @@
+{
+  "login": {
+    "title": "Selamat Datang Kembali",
+    "subtitle": "Silakan masuk untuk melanjutkan",
+    "usernameLabel": "Nama Pengguna",
+    "usernameHint": "Masukkan nama pengguna Anda",
+    "passwordLabel": "Kata Sandi",
+    "passwordHint": "Masukkan kata sandi Anda",
+    "button": "Masuk",
+    "errorEmpty": "Kolom ini tidak boleh kosong"
+  },
+  "home": {
+    "title": "Beranda",
+    "greeting": "Halo, ${name}!",
+    "logout": "Keluar"
+  },
+  "more": {
+    "title": "Lainnya",
+    "settings": "Pengaturan",
+    "settingsSubtitle": "Pengaturan Umum dan Tampilan",
+    "about": "Tentang",
+    "aboutSubtitle": "Versi aplikasi dan info"
+  },
+  "about": {
+    "title": "Tentang",
+    "descriptionTitle": "Deskripsi",
+    "descriptionSubtitle": "Aplikasi Flutter modern yang dibangun dengan arsitektur bersih dan Riverpod.",
+    "developedByTitle": "Dikembangkan oleh",
+    "developedBySubtitle": "Codename Antigravity",
+    "copyrightTitle": "Hak Cipta",
+    "copyrightSubtitle": "© 2024 Codename Antigravity. Seluruh hak dilindungi.",
+    "viewLicenses": "Lihat Lisensi",
+    "legalese": "© 2024 Codename Antigravity",
+    "version": "Versi ${version} (${build})"
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "general": "Umum",
+    "appearance": "Tampilan",
+    "language": "Bahasa",
+    "languageIndonesian": "Bahasa Indonesia",
+    "languageEnglish": "Bahasa Inggris",
+    "theme": "Mode Tema",
+    "trueBlack": "Mode gelap hitam pekat",
+    "trueBlackSubtitle": "Gunakan latar belakang hitam murni di mode gelap",
+    "themeScheme": "Skema Tema",
+    "themeSystem": "Sistem",
+    "themeLight": "Terang",
+    "themeDark": "Gelap"
+  },
+  "common": {
+    "appTitle": "Templat App",
+    "error": "Terjadi kesalahan",
+    "retry": "Coba lagi",
+    "success": "Sukses",
+    "cancel": "Batal",
+    "logout": "Keluar",
+    "search": "Cari...",
+    "dialog": {
+      "logoutTitle": "Keluar",
+      "logoutContent": "Apakah Anda yakin ingin keluar?",
+      "exitTitle": "Keluar Aplikasi",
+      "exitContent": "Apakah Anda yakin ingin keluar dari aplikasi?"
+    }
+  }
+}
