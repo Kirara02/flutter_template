@@ -49,7 +49,7 @@ class MyApp extends ConsumerWidget {
     final currentLocale = ref.watch(localeProvider);
 
     return MaterialApp.router(
-      title: 'Flutter Base Template',
+      title: t.common.appTitle,
 
       // Theme Configuration
       theme: AppTheme.light(flexScheme),
