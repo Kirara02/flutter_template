@@ -26,11 +26,11 @@
     "descriptionTitle": "Description",
     "descriptionSubtitle": "A modern Flutter application built with clean architecture and Riverpod.",
     "developedByTitle": "Developed by",
-    "developedBySubtitle": "Codename Antigravity",
+    "developedBySubtitle": "Kirara Bernstein",
     "copyrightTitle": "Copyright",
-    "copyrightSubtitle": "© 2024 Codename Antigravity. All rights reserved.",
+    "copyrightSubtitle": "© 2026 Kirara Bernstein. All rights reserved.",
     "viewLicenses": "View Licenses",
-    "legalese": "© 2024 Codename Antigravity",
+    "legalese": "© 2026 Kirara Bernstein",
     "version": "Version ${version} (${build})"
   },
   "settings": {

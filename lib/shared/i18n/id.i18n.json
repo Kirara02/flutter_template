@@ -26,11 +26,11 @@
     "descriptionTitle": "Deskripsi",
     "descriptionSubtitle": "Aplikasi Flutter modern yang dibangun dengan arsitektur bersih dan Riverpod.",
     "developedByTitle": "Dikembangkan oleh",
-    "developedBySubtitle": "Codename Antigravity",
+    "developedBySubtitle": "Kirara Bernstein",
     "copyrightTitle": "Hak Cipta",
-    "copyrightSubtitle": "© 2024 Codename Antigravity. Seluruh hak dilindungi.",
+    "copyrightSubtitle": "© 2026 Kirara Bernstein. Seluruh hak dilindungi.",
     "viewLicenses": "Lihat Lisensi",
-    "legalese": "© 2024 Codename Antigravity",
+    "legalese": "© 2026 Kirara Bernstein",
     "version": "Versi ${version} (${build})"
   },
   "settings": {
