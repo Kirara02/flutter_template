@@ -1,4 +1,5 @@
-import 'package:kirara_template/core/result/result.dart';
+import 'package:kirara_template/core/base/result.dart';
+import 'package:kirara_template/core/base/use_case.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/models/requests/login_request.dart';
@@ -43,7 +44,7 @@ class AuthController extends _$AuthController {
     final authNotifier = ref.read(authProvider.notifier);
 
     state = await AsyncValue.guard(() async {
-      final result = await useCase();
+      final result = await useCase(NoParams());
 
       switch (result) {
         case Success(:final message):

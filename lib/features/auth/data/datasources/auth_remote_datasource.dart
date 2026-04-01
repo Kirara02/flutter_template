@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:kirara_template/core/network/dio_client.dart';
 import 'package:kirara_template/core/network/safe_api_call.dart';
-import 'package:kirara_template/core/result/result.dart';
+import 'package:kirara_template/core/base/result.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_remote_datasource.g.dart';

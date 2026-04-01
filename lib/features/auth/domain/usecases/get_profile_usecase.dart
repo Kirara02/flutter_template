@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:kirara_template/core/result/result.dart';
+import 'package:kirara_template/core/base/result.dart';
+import 'package:kirara_template/core/base/use_case.dart';
 import '../entities/user.dart';
 import '../repositories/auth_repository.dart';
 import '../../data/repositories/auth_repository_impl.dart';
@@ -12,12 +13,13 @@ GetProfileUseCase getProfileUseCase(Ref ref) {
   return GetProfileUseCase(ref.watch(authRepositoryProvider));
 }
 
-class GetProfileUseCase {
+class GetProfileUseCase implements UseCase<User, NoParams> {
   final IAuthRepository _repository;
 
   GetProfileUseCase(this._repository);
 
-  Future<Result<User>> call() async {
+  @override
+  Future<Result<User>> call(NoParams params) async {
     return _repository.getProfile();
   }
 }

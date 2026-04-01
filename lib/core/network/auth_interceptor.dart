@@ -1,8 +1,7 @@
-import 'dart:async';
-
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:kirara_template/core/auth/session_manager.dart';
+import 'package:kirara_template/core/auth/token_manager.dart';
 
 /// Interceptor that handles:
 /// 1. Attaching the access token to every request as a Bearer header.
@@ -11,7 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// 3. If the refresh call also fails (401), clearing all saved tokens and
 ///    calling [onUnauthenticated] so the app can redirect to the login screen.
 class AuthInterceptor extends Interceptor {
-  final SharedPreferences _prefs;
+  final TokenManager _tokenManager;
+  final SessionManager _sessionManager;
   final Dio _dio;
   final Logger _logger;
 
@@ -19,26 +19,29 @@ class AuthInterceptor extends Interceptor {
   /// Use this to reset auth state (e.g. set AuthNotifier state to null).
   final void Function()? onUnauthenticated;
 
-  static const _tokenKey = 'auth_token';
-  static const _refreshTokenKey = 'auth_refresh_token';
   static const _refreshEndpoint = '/api/auth/refresh';
   static const _loginEndpoint = '/api/auth/login';
 
   // Guards against concurrent refresh calls when multiple requests 401 at once.
   bool _isRefreshing = false;
   final List<({RequestOptions options, ErrorInterceptorHandler handler})>
-  _pendingRequests = [];
+      _pendingRequests = [];
 
   AuthInterceptor(
-    this._prefs,
+    this._tokenManager,
+    this._sessionManager,
     this._dio,
     this._logger, {
     this.onUnauthenticated,
   });
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final token = _prefs.getString(_tokenKey);
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    _sessionManager.recordActivity();
+    final token = await _tokenManager.accessToken;
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
@@ -71,7 +74,7 @@ class AuthInterceptor extends Interceptor {
 
     _isRefreshing = true;
 
-    final refreshToken = _prefs.getString(_refreshTokenKey);
+    final refreshToken = await _tokenManager.refreshToken;
 
     if (refreshToken == null) {
       // No refresh token → force logout
@@ -105,9 +108,9 @@ class AuthInterceptor extends Interceptor {
       }
 
       // Persist the new tokens
-      await _prefs.setString(_tokenKey, newToken);
+      await _tokenManager.writeAccessToken(newToken);
       if (newRefreshToken != null) {
-        await _prefs.setString(_refreshTokenKey, newRefreshToken);
+        await _tokenManager.writeRefreshToken(newRefreshToken);
       }
 
       _logger.i(
@@ -169,14 +172,9 @@ class AuthInterceptor extends Interceptor {
     );
   }
 
-  Future<void> _clearTokens() async {
-    await _prefs.remove(_tokenKey);
-    await _prefs.remove(_refreshTokenKey);
-  }
-
   /// Clears tokens and notifies the app that the session is fully expired.
   Future<void> _clearTokensAndNotify() async {
-    await _clearTokens();
+    await _tokenManager.clearTokens();
     onUnauthenticated?.call();
   }
 }

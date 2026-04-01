@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../shared/providers/shared_preferences_provider.dart';
+import '../auth/session_manager.dart';
+import '../auth/token_manager.dart';
 import '../logger/logger_provider.dart';
 import 'auth_interceptor.dart';
 // ignore: implementation_imports
@@ -25,14 +26,16 @@ Dio dio(Ref ref) {
     ),
   );
 
-  final prefs = ref.watch(sharedPreferencesProvider);
+  final tokenManager = ref.watch(tokenManagerProvider);
+  final sessionManager = ref.watch(sessionManagerProvider);
   final logger = ref.watch(loggerProvider);
 
   // Auth interceptor: attaches Bearer token, handles 401 refresh + retry,
   // and resets auth state when both tokens are fully expired.
   dio.interceptors.add(
     AuthInterceptor(
-      prefs,
+      tokenManager,
+      sessionManager,
       dio,
       logger,
       onUnauthenticated: () {

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kirara_template/core/result/result.dart';
+import 'package:kirara_template/core/base/result.dart';
 import 'package:kirara_template/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:kirara_template/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:kirara_template/features/auth/data/models/requests/login_request.dart';

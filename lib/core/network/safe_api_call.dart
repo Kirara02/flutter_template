@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import '../error/app_exception.dart';
 import '../response/api_error.dart';
 import '../response/base_api_response.dart';
-import '../result/result.dart';
+import '../base/result.dart';
 
 /// A helper function to safely execute network calls using Dio
 /// and wrap the response in a [Result] object.

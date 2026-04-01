@@ -1,4 +1,5 @@
-import 'package:kirara_template/core/result/result.dart';
+import 'package:kirara_template/core/base/result.dart';
+import 'package:kirara_template/core/base/use_case.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/models/requests/login_request.dart';
@@ -13,11 +14,12 @@ LoginUseCase loginUseCase(Ref ref) {
   return LoginUseCase(ref.watch(authRepositoryProvider));
 }
 
-class LoginUseCase {
+class LoginUseCase implements UseCase<User, LoginRequest> {
   final IAuthRepository _repository;
 
   LoginUseCase(this._repository);
 
+  @override
   Future<Result<User>> call(LoginRequest request) {
     if (request.username.isEmpty || request.password.isEmpty) {
       return Future.value(Result.failure(Exception('Email and password must not be empty')));

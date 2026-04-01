@@ -1,7 +1,6 @@
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:kirara_template/shared/providers/shared_preferences_provider.dart';
+import 'package:kirara_template/core/auth/token_manager.dart';
 
 part 'auth_local_datasource.g.dart';
 
@@ -16,50 +15,34 @@ abstract class AuthLocalDataSource {
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
-  final SharedPreferences _prefs;
-  static const _tokenKey = 'auth_token';
-  static const _refreshTokenKey = 'auth_refresh_token';
+  final TokenManager _tokenManager;
 
-  AuthLocalDataSourceImpl(this._prefs);
+  AuthLocalDataSourceImpl(this._tokenManager);
 
   @override
-  Future<void> saveToken(String token) async {
-    await _prefs.setString(_tokenKey, token);
-  }
+  Future<void> saveToken(String token) => _tokenManager.writeAccessToken(token);
 
   @override
-  Future<String?> getToken() async {
-    return _prefs.getString(_tokenKey);
-  }
+  Future<String?> getToken() => _tokenManager.accessToken;
 
   @override
-  Future<void> deleteToken() async {
-    await _prefs.remove(_tokenKey);
-  }
+  Future<void> deleteToken() => _tokenManager.deleteAccessToken();
 
   @override
-  Future<void> saveRefreshToken(String token) async {
-    await _prefs.setString(_refreshTokenKey, token);
-  }
+  Future<void> saveRefreshToken(String token) =>
+      _tokenManager.writeRefreshToken(token);
 
   @override
-  Future<String?> getRefreshToken() async {
-    return _prefs.getString(_refreshTokenKey);
-  }
+  Future<String?> getRefreshToken() => _tokenManager.refreshToken;
 
   @override
-  Future<void> deleteRefreshToken() async {
-    await _prefs.remove(_refreshTokenKey);
-  }
+  Future<void> deleteRefreshToken() => _tokenManager.deleteRefreshToken();
 
   @override
-  Future<void> clearAll() async {
-    await _prefs.remove(_tokenKey);
-    await _prefs.remove(_refreshTokenKey);
-  }
+  Future<void> clearAll() => _tokenManager.clearTokens();
 }
 
 @riverpod
 AuthLocalDataSource authLocalDataSource(Ref ref) {
-  return AuthLocalDataSourceImpl(ref.watch(sharedPreferencesProvider));
+  return AuthLocalDataSourceImpl(ref.watch(tokenManagerProvider));
 }
