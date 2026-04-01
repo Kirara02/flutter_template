@@ -1,69 +1,71 @@
-# Flutter Advanced Base Template
+# 🚀 Flutter Premium Base Template
 
-A modern, production-ready Flutter starter template built on **Feature-First Domain-Driven Design (DDD)**. Designed for scalability, type safety, and a great developer experience out of the box.
-
----
-
-## 🚀 Key Features
-
-| Feature | Detail |
-|---|---|
-| **Architecture** | Feature-First DDD — clean separation of Data / Domain / Presentation |
-| **State Management** | Riverpod with code generation (`riverpod_generator`) |
-| **Navigation** | GoRouter with nested shell routing + type-safe route builders |
-| **Networking** | Dio with `AuthInterceptor` — auto refresh token & retry on 401 |
-| **Localization** | Slang — type-safe i18n with EN & ID support |
-| **Theming** | FlexColorScheme + Google Fonts, Light / Dark / System modes |
-| **Persistence** | SharedPreferences for token & settings storage |
-| **Responsive UI** | Bottom nav (phone) → Navigation Rail (tablet) → Extended Rail (desktop) |
-| **Environment** | `.env` configuration via `flutter_dotenv` |
-| **Icons** | Font Awesome Flutter v11 |
+A modern, high-fidelity, and production-ready Flutter starter template built on **Feature-First Domain-Driven Design (DDD)**. This template is designed for maximum developer productivity, type safety, and a premium user experience out of the box.
 
 ---
 
-## 🏗️ Project Structure
+## 💎 Key Features
+
+| Feature                | Detail                                                                                                           |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Clean Architecture** | Feature-First DDD — strict separation of **Data / Domain / Presentation** layers.                                |
+| **Design System**      | Centralized design tokens for Colors, Spacing, Radius, Shadows, and Typography.                                  |
+| **Declarative UI**     | Fluent widget extensions (`.center`, `.padAll`, `.vSpace`) for a cleaner widget tree.                            |
+| **State Management**   | Riverpod 3.x with advanced code generation (`riverpod_generator`).                                               |
+| **Navigation**         | GoRouter with Nested Shell Routing and type-safe route builders.                                                 |
+| **Security**           | `FlutterSecureStorage` for encrypted tokens (Keychain/Keystore).                                                 |
+| **Networking**         | Dio with `AuthInterceptor` — seamless refresh token flow & 401 retries.                                          |
+| **I18n / L10n**        | Slang — compile-time safe translations with **EN** and **ID** support.                                           |
+| **Premium Theming**    | `FlexColorScheme` v8 + Google Fonts, including **System**, **Light**, **Dark**, and **True Black (OLED)** modes. |
+| **Advanced Utils**     | Extensions for `Iterable` (groupBy, sortedBy, distinctBy), `num`, and `DateTime`.                                |
+
+---
+
+## 🏗️ Project Architecture
 
 ```text
 lib/
 ├── core/
-│   ├── api/                  # Dio client, AuthInterceptor, safeApiCall
-│   ├── error/                # AppException hierarchy
-│   ├── extensions/           # BuildContext, String, DateTime extensions
-│   ├── localization/         # Slang JSON source files + generated strings
-│   ├── providers/            # Shared providers (SharedPreferences, Logger)
-│   ├── response/             # BaseApiResponse, ApiError models
-│   ├── result/               # Result<T> (Success / Failure) sealed class
-│   ├── routing/              # GoRouter + shell routes + route guards
-│   ├── theme/                # FlexColorScheme, typography, theme provider
-│   ├── utils/                # MapSerializable, helpers
-│   └── widgets/              # Shared UI components (AppButton, AppTextField…)
+│   ├── auth/                 # SecureStorageService, TokenManager, SessionManager
+│   ├── base/                 # UseCase, Result types
+│   ├── design_system/        # AppColors, AppSpacing, AppRadius, AppTypography
+│   ├── error/                # Custom AppException hierarchy
+│   ├── extensions/           # WIDGET, ITERABLE, NUM, CONTEXT extensions
+│   ├── gen/                  # Asset/Color generators (flutter_gen)
+│   ├── logger/               # Logger configuration
+│   ├── network/              # DioClient, AuthInterceptor, safeApiCall
+│   ├── response/             # BaseApiResponse, models
+│   ├── router/               # GoRouter paths & type-safe Route Builders
+│   ├── theme/                # ThemeProvider, FlexColorScheme setup
+│   └── utils/                # Mapping and helpers
+├── shared/
+│   ├── i18n/                 # Slang JSON source (EN/ID) & generated files
+│   ├── providers/            # Shared Riverpod providers (SharedPreferences, etc.)
+│   └── widgets/              # Standardized UI Components (AppButton, AppTextField, etc.)
 └── features/
     ├── auth/
-    │   ├── data/             # Datasources, DTOs, repository impl
-    │   ├── domain/           # Entities (User), repository interface, use cases
-    │   └── presentation/     # AuthNotifier, AuthController, LoginScreen
+    │   ├── data/             # Datasources, DTOs, Repository implementations
+    │   ├── domain/           # Entities, Repository interfaces, Use Cases
+    │   └── presentation/     # AuthProvider, AuthController, Screens
     ├── home/
-    │   └── presentation/     # HomeScreen with profile refresh
+    │   └── presentation/     # HomeScreen and related widgets
     └── settings/
         └── presentation/     # SettingsScreen, MoreScreen, AboutScreen
 ```
 
 ---
 
-## 🛠️ Technical Stack
+## 🛠️ Technical Ecosystem
 
-| Category | Library |
-|---|---|
-| **State Management** | `flutter_riverpod` · `riverpod_annotation` · `riverpod_generator` |
-| **Navigation** | `go_router` · `go_router_builder` |
-| **Networking** | `dio` |
-| **Localization** | `slang` · `slang_flutter` · `slang_build_runner` |
-| **Serialization** | `freezed` · `freezed_annotation` · `json_serializable` |
-| **Theming** | `flex_color_scheme` · `google_fonts` |
-| **Icons** | `font_awesome_flutter` |
-| **Local Storage** | `shared_preferences` |
-| **Environment** | `flutter_dotenv` |
-| **Logging** | `logger` |
+| Category         | Recommended Libraries                                             |
+| ---------------- | ----------------------------------------------------------------- |
+| **State**        | `flutter_riverpod` · `riverpod_annotation` · `riverpod_generator` |
+| **Routing**      | `go_router` · `go_router_builder`                                 |
+| **Networking**   | `dio`                                                             |
+| **Storage**      | `flutter_secure_storage` · `shared_preferences`                   |
+| **Localization** | `slang` · `slang_flutter`                                         |
+| **Theming**      | `flex_color_scheme` · `google_fonts`                              |
+| **Persistence**  | `freezed` · `json_serializable`                                   |
 
 ---
 
@@ -71,103 +73,57 @@ lib/
 
 ### Prerequisites
 
-- Flutter SDK ≥ 3.x (latest stable recommended)
+- Flutter SDK ≥ 3.x (Stable)
 - Dart SDK ≥ 3.x
 
 ### Installation
 
-**1. Clone the repository**
+1. **Clone the repository**
 
-```bash
-git clone https://github.com/Kirara02/flutter_template.git
-cd flutter_template
-```
+   ```bash
+   git clone https://github.com/Kirara02/flutter_template.git
+   cd flutter_template
+   ```
 
-**2. Create `.env` file**
+2. **Initialize Environment**
 
-```bash
-cp .env.example .env   # then edit BASE_URL
-```
+   ```bash
+   cp .env.example .env   # edit with your BASE_URL
+   ```
 
-```env
-BASE_URL=https://your-api.example.com
-```
+3. **Install Dependencies**
 
-**3. Install dependencies**
+   ```bash
+   flutter pub get
+   ```
 
-```bash
-flutter pub get
-```
+4. **Run Code Generation**
+   We use multiple generators. Run them in this order:
 
-**4. Generate localization strings (Slang)**
+   ```bash
+   # 1. Regenerate localization (Slang)
+   dart run slang
 
-Slang reads the JSON source files and generates type-safe Dart code.
-
-```bash
-dart run slang
-```
-
-> Only run this when you add or modify translation keys in `lib/core/localization/en.i18n.json` or `id.i18n.json`.  
-> Generated files (`strings.g.dart`, `strings_en.g.dart`, `strings_id.g.dart`) are committed to the repo — you only need to re-run when keys change.
-
-**5. Generate Riverpod / Freezed / GoRouter code**
-
-```bash
-dart run build_runner build --delete-conflicting-outputs
-```
-
-> **Note**: Run `build_runner` _after_ `dart run slang` so the localization generated files are present and conflict-free.
-
-**6. Run the application**
-
-```bash
-flutter run
-```
+   # 2. Build Riverpod, Router, and Freezed
+   dart run build_runner build --delete-conflicting-outputs
+   ```
 
 ---
 
 ## 🔄 Code Generation Quick Reference
 
-| Task | Command |
-|---|---|
-| Regenerate localization | `dart run slang` |
-| Regenerate Riverpod / Freezed / Router | `dart run build_runner build -d` |
-| Watch mode (auto-rebuild on save) | `dart run build_runner watch -d` |
-| Both at once | `dart run slang && dart run build_runner build -d` |
-
----
-
-## 🔐 Auth & Token Flow
-
-This template includes a full token lifecycle:
-
-1. **Login** — saves `access_token` + `refresh_token` to SharedPreferences.
-2. **AuthInterceptor** — attaches `Bearer <token>` to every request automatically.
-3. **Token Expiry** — on 401, interceptor transparently:
-   - Calls `POST /api/auth/refresh` with the stored refresh token.
-   - Saves the new tokens.
-   - Retries the original request (and any queued concurrent requests).
-4. **Full Expiry** — if the refresh call also fails, all tokens are cleared and `AuthNotifier` resets the session → GoRouter redirects to Login automatically.
-
----
-
-## 📱 Responsive Navigation
-
-Adaptive shell navigation based on screen size:
-
-| Screen | Navigation |
-|---|---|
-| **Phone** | `NavigationBar` (bottom) |
-| **Tablet** | `NavigationRail` (side, compact) |
-| **Desktop** | `NavigationRail` (side, extended with labels) |
-
-Navigation bar is only shown on top-level routes (`/home`, `/more`). Sub-pages hide it automatically.
+| Task         | Command                                                    |
+| ------------ | ---------------------------------------------------------- |
+| Refresh All  | `dart run slang && dart run build_runner build -d`         |
+| Watch Mode   | `dart run build_runner watch --delete-conflicting-outputs` |
+| Build Once   | `dart run build_runner build --delete-conflicting-outputs` |
+| Localization | `dart run slang`                                           |
 
 ---
 
 ## 🌐 Localization (Slang)
 
-Translation source files live in `lib/core/localization/`:
+Translation source files live in `lib/shared/i18n/`:
 
 ```
 en.i18n.json   ← English (base)
@@ -183,12 +139,25 @@ context.l10n.home.greeting(name: user.name)
 context.l10n.settings.theme
 ```
 
-To add a new key:
+---
 
-1. Add the key to `en.i18n.json` and `id.i18n.json`.
-2. Run `dart run slang`.
-3. Use it via `context.l10n.<section>.<key>`.
+## 🌓 Theming & Custom Design System
+
+Access tokens anywhere using `BuildContext`:
+
+```dart
+// Access Tokens
+context.spacing.md    // 16.0
+context.radius.borderMd
+
+// Declarative UI (Extensions)
+Text("Hello").center.padAll(AppSpacing.md);
+
+// Spacing Utilities
+16.vSpace            // Vertical spacing 16.0
+12.hSpace            // Horizontal spacing 12.0
+```
 
 ---
 
-Built with ❤️ by [Kirara](https://github.com/Kirara02).
+Built with 💎 by **Kirara Bernstein** (2026).
