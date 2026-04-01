@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:kirara_template/core/providers/shared_preferences_provider.dart';
+import 'package:kirara_template/shared/providers/shared_preferences_provider.dart';
 
 part 'auth_local_datasource.g.dart';
 

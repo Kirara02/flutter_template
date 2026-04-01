@@ -13,8 +13,8 @@ void main() async {
   // Set default locale before app starts
   LocaleSettings.useDeviceLocale();
 
-  // Load environment variables
-  await dotenv.load(fileName: ".env");
+  // Load environment variables for staging
+  await dotenv.load(fileName: ".env.staging");
 
   // Initialize SharedPreferences
   final prefs = await SharedPreferences.getInstance();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../localization/strings.g.dart';
+import '../../shared/i18n/strings.g.dart';
 
 /// Extension methods for BuildContext to reduce boilerplate
 extension BuildContextExt on BuildContext {

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../providers/shared_preferences_provider.dart';
-import '../providers/logger_provider.dart';
+import '../../shared/providers/shared_preferences_provider.dart';
+import '../logger/logger_provider.dart';
 import 'auth_interceptor.dart';
 // ignore: implementation_imports
 import '../../features/auth/presentation/providers/auth_provider.dart';

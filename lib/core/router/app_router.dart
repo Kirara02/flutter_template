@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../widgets/shell/app_shell.dart';
+import '../../shared/widgets/shell/app_shell.dart';
 import 'package:kirara_template/features/home/presentation/screens/home/home_screen.dart';
 import 'package:kirara_template/features/settings/presentation/screens/more/more_screen.dart';
 import 'package:kirara_template/features/auth/presentation/screens/login/login_screen.dart';

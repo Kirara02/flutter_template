@@ -2,7 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../providers/shared_preferences_provider.dart';
+import '../../shared/providers/shared_preferences_provider.dart';
 
 part 'theme_provider.g.dart';
 

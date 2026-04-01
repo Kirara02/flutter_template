@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../extensions/build_context_ext.dart';
+import '../../core/extensions/build_context_ext.dart';
 import 'app_button.dart';
 
 class AppError extends StatelessWidget {

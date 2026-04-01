@@ -5,10 +5,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kirara_template/core/extensions/build_context_ext.dart';
 import 'package:kirara_template/core/extensions/string_ext.dart';
 import 'package:kirara_template/core/extensions/widget_ext.dart';
-import 'package:kirara_template/core/routing/app_router.dart';
-import 'package:kirara_template/core/widgets/app_button.dart';
-import 'package:kirara_template/core/widgets/app_dialog.dart';
-import 'package:kirara_template/core/widgets/app_text_field.dart';
+import 'package:kirara_template/core/router/app_router.dart';
+import 'package:kirara_template/shared/widgets/app_button.dart';
+import 'package:kirara_template/shared/widgets/app_dialog.dart';
+import 'package:kirara_template/shared/widgets/app_text_field.dart';
 
 import '../../providers/auth_controller.dart';
 

@@ -1,10 +1,10 @@
 import 'package:kirara_template/core/extensions/string_ext.dart';
-import 'package:kirara_template/core/localization/locale_provider.dart';
-import 'package:kirara_template/core/localization/strings.g.dart';
+import 'package:kirara_template/shared/i18n/locale_provider.dart';
+import 'package:kirara_template/shared/i18n/strings.g.dart';
 import 'package:kirara_template/core/theme/theme_provider.dart';
-import 'package:kirara_template/core/widgets/app_selection_dialog.dart';
+import 'package:kirara_template/shared/widgets/app_selection_dialog.dart';
 import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/core/widgets/settings_group.dart';
+import 'package:kirara_template/shared/widgets/settings_group.dart';
 import 'widgets/app_theme_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

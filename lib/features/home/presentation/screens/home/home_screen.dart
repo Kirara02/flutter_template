@@ -5,7 +5,7 @@ import 'package:kirara_template/core/extensions/build_context_ext.dart';
 import 'package:kirara_template/core/extensions/widget_ext.dart';
 import 'package:kirara_template/core/extensions/date_time_ext.dart';
 import 'package:kirara_template/core/result/result.dart';
-import 'package:kirara_template/core/widgets/app_button.dart';
+import 'package:kirara_template/shared/widgets/app_button.dart';
 import 'package:kirara_template/features/auth/domain/usecases/get_profile_usecase.dart';
 import 'package:kirara_template/features/auth/presentation/providers/auth_provider.dart';
 

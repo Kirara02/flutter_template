@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kirara_template/core/localization/strings.g.dart';
-import 'package:kirara_template/core/widgets/app_button.dart';
-import 'package:kirara_template/core/widgets/app_text_field.dart';
+import 'package:kirara_template/shared/i18n/strings.g.dart';
+import 'package:kirara_template/shared/widgets/app_button.dart';
+import 'package:kirara_template/shared/widgets/app_text_field.dart';
 import 'package:kirara_template/features/auth/presentation/screens/login/login_screen.dart';
 
 void main() {
