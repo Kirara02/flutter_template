@@ -101,7 +101,7 @@ class SettingsScreen extends ConsumerWidget {
                   }
                 },
               ),
-              if (themeMode != ThemeMode.light) ...[
+              if (context.isDarkMode) ...[
                 SwitchListTile(
                   title: Text(context.l10n.settings.trueBlack),
                   subtitle: Text(context.l10n.settings.trueBlackSubtitle),
