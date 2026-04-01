@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:kirara_template/core/auth/token_manager.dart';
+import '../../../../core/auth/token_manager.dart';
 
 part 'auth_local_datasource.g.dart';
 

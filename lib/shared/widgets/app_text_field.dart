@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../core/extensions/context_ext.dart';
+import '../../core/extensions/widget_ext.dart';
+import '../../core/design_system/design_system.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -56,31 +59,35 @@ class _AppTextFieldState extends State<AppTextField> {
         labelText: widget.label,
         hintText: widget.hintText,
         prefixIcon: widget.prefixIcon != null
-            ? SizedBox(
-                width: 48,
-                height: 48,
-                child: Center(child: widget.prefixIcon),
-              )
+            ? SizedBox(width: 48, height: 48, child: widget.prefixIcon!.center)
             : null,
         suffixIcon: widget.obscureText
             ? SizedBox(
                 width: 48,
                 height: 48,
-                child: Center(
-                  child: IconButton(
-                    onPressed: () =>
-                        setState(() => _obscureText = !_obscureText),
-                    icon: FaIcon(
-                      _obscureText
-                          ? FontAwesomeIcons.eyeSlash
-                          : FontAwesomeIcons.eye,
-                      size: 16,
-                    ),
+                child: IconButton(
+                  onPressed: () => setState(() => _obscureText = !_obscureText),
+                  icon: FaIcon(
+                    _obscureText
+                        ? FontAwesomeIcons.eyeSlash
+                        : FontAwesomeIcons.eye,
+                    size: 16,
                   ),
-                ),
+                ).center,
               )
             : widget.suffixIcon,
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: context.radius.borderMd),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: context.radius.borderMd,
+          borderSide: BorderSide(color: context.theme.dividerColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: context.radius.borderMd,
+          borderSide: BorderSide(
+            color: context.theme.colorScheme.primary,
+            width: 2,
+          ),
+        ),
       ),
     );
   }

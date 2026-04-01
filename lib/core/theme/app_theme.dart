@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../design_system/design_system.dart';
 
 class AppTheme {
   static ThemeData light(FlexScheme scheme) {
@@ -19,6 +20,14 @@ class AppTheme {
       useMaterial3: true,
       swapLegacyOnMaterial3: true,
       textTheme: GoogleFonts.interTextTheme(),
+      extensions: [
+        AppColorsTheme.light,
+        AppSpacingTheme.defaults,
+        AppRadiusTheme.defaults,
+        AppShadowsTheme.defaults,
+        AppDurationsTheme.defaults,
+        AppTypographyTheme.defaults,
+      ],
     );
   }
 
@@ -40,6 +49,14 @@ class AppTheme {
       textTheme: GoogleFonts.interTextTheme(
         ThemeData(brightness: Brightness.dark).textTheme,
       ),
+      extensions: [
+        AppColorsTheme.dark,
+        AppSpacingTheme.defaults,
+        AppRadiusTheme.defaults,
+        AppShadowsTheme.defaults,
+        AppDurationsTheme.defaults,
+        AppTypographyTheme.defaults,
+      ],
     );
   }
 }

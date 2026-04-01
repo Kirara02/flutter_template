@@ -1,4 +1,4 @@
-import 'package:kirara_template/core/utils/map_serializable.dart';
+import '../../../../core/utils/map_serializable.dart';
 
 import '../../domain/entities/user.dart';
 

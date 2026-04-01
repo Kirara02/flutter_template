@@ -1,8 +1,10 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/core/theme/theme_provider.dart';
+import '../../../../../../core/design_system/design_system.dart';
+import '../../../../../../core/extensions/context_ext.dart';
+import '../../../../../../core/extensions/widget_ext.dart';
+import '../../../../../../core/theme/theme_provider.dart';
 
 class AppThemeSelector extends ConsumerStatefulWidget {
   const AppThemeSelector({super.key});
@@ -62,50 +64,46 @@ class _AppThemeSelectorState extends ConsumerState<AppThemeSelector> {
       }
     });
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: SizedBox(
-        height: 200,
-        child: Scrollbar(
+    return SizedBox(
+      height: 200,
+      child: Scrollbar(
+        controller: _scrollController,
+        thumbVisibility: true,
+        notificationPredicate: (notification) =>
+            notification.metrics.axis == Axis.horizontal,
+        child: ListView.builder(
           controller: _scrollController,
-          thumbVisibility: true,
-          notificationPredicate: (notification) => notification.metrics.axis == Axis.horizontal,
-          child: ListView.builder(
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.only(left: 12, right: 12),
-            itemCount: _flexSchemaList.length,
-            itemBuilder: (context, index) {
-              final scheme = _flexSchemaList[index];
-              final flexSchemeColor = FlexColor.schemes[scheme];
-              if (flexSchemeColor == null) return const SizedBox.shrink();
+          scrollDirection: Axis.horizontal,
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
+          itemCount: _flexSchemaList.length,
+          itemBuilder: (context, index) {
+            final scheme = _flexSchemaList[index];
+            final flexSchemeColor = FlexColor.schemes[scheme];
+            if (flexSchemeColor == null) return const SizedBox.shrink();
 
-              final isDesktop = MediaQuery.sizeOf(context).width > 800;
-              final buttonWidth = isDesktop ? 52.0 : 44.0;
-              final buttonHeight = isDesktop ? 80.0 : 72.0;
+            final isDesktop = MediaQuery.sizeOf(context).width > 800;
+            final buttonWidth = isDesktop ? 52.0 : 44.0;
+            final buttonHeight = isDesktop ? 80.0 : 72.0;
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Tooltip(
-                  message: scheme.name.toUpperCase(),
-                  child: FlexThemeModeOptionButton(
-                    height: buttonHeight,
-                    width: buttonWidth,
-                    optionButtonBorderRadius: 12,
-                    flexSchemeColor: context.isDarkMode
-                        ? flexSchemeColor.dark
-                        : flexSchemeColor.light,
-                    borderRadius: 10,
-                    selected: selectedAppTheme == scheme,
-                    onSelect: () => ref.read(flexSchemeProvider.notifier).setScheme(scheme),
-                  ),
-                ),
-              );
-            },
-          ),
+            return Tooltip(
+              message: scheme.name.toUpperCase(),
+              child: FlexThemeModeOptionButton(
+                height: buttonHeight,
+                width: buttonWidth,
+                optionButtonBorderRadius: 12,
+                flexSchemeColor: context.isDarkMode
+                    ? flexSchemeColor.dark
+                    : flexSchemeColor.light,
+                borderRadius: 10,
+                selected: selectedAppTheme == scheme,
+                onSelect: () =>
+                    ref.read(flexSchemeProvider.notifier).setScheme(scheme),
+              ),
+            ).padSymmetric(horizontal: AppSpacing.xs);
+          },
         ),
       ),
-    );
+    ).padSymmetric(vertical: AppSpacing.md);
   }
 }

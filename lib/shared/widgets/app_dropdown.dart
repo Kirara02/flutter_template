@@ -1,7 +1,8 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
+import '../../core/design_system/design_system.dart';
+import '../../core/extensions/context_ext.dart';
 
 class AppDropdown<T> extends StatelessWidget {
   const AppDropdown({
@@ -40,7 +41,18 @@ class AppDropdown<T> extends StatelessWidget {
         decoration: InputDecoration(
           labelText: label,
           hintText: hintText,
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(borderRadius: context.radius.borderMd),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: context.radius.borderMd,
+            borderSide: BorderSide(color: context.theme.dividerColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: context.radius.borderMd,
+            borderSide: BorderSide(
+              color: context.theme.colorScheme.primary,
+              width: 2,
+            ),
+          ),
         ),
       ),
       popupProps: PopupProps.menu(
@@ -48,8 +60,19 @@ class AppDropdown<T> extends StatelessWidget {
         fit: FlexFit.loose,
         searchFieldProps: TextFieldProps(
           decoration: InputDecoration(
-            border: const OutlineInputBorder(),
             hintText: context.l10n.common.search,
+            border: OutlineInputBorder(borderRadius: context.radius.borderMd),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: context.radius.borderMd,
+              borderSide: BorderSide(color: context.theme.dividerColor),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: context.radius.borderMd,
+              borderSide: BorderSide(
+                color: context.theme.colorScheme.primary,
+                width: 2,
+              ),
+            ),
             prefixIcon: const SizedBox(
               width: 48,
               height: 48,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/design_system/design_system.dart';
 import 'app_button.dart';
 
 class AppDialog extends StatelessWidget {
@@ -48,8 +49,14 @@ class AppDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
-      content: Text(description),
+      shape: RoundedRectangleBorder(borderRadius: context.radius.borderLg),
+      title: Text(title, style: context.appTypography.titleLarge),
+      content: Text(
+        description,
+        style: context.appTypography.bodyMedium.copyWith(
+          color: context.appColors.textMuted,
+        ),
+      ),
       actions: [
         AppButton(
           text: cancelText ?? 'Cancel',
@@ -61,9 +68,7 @@ class AppDialog extends StatelessWidget {
         ),
         AppButton(
           text: confirmText ?? 'Confirm',
-          type: isDanger ? AppButtonType.primary : AppButtonType.primary,
-          // We can customize the button color further but let's stick to theme for now
-          // If it's danger, maybe we use a specific seed or color
+          type: isDanger ? AppButtonType.error : AppButtonType.primary,
           onPressed: () {
             onConfirm();
             Navigator.of(context).pop(true);

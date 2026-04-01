@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../core/design_system/design_system.dart';
+import '../../core/extensions/widget_ext.dart';
 
-import '../../core/extensions/build_context_ext.dart';
+import '../../core/extensions/context_ext.dart';
 import 'app_button.dart';
 
 class AppError extends StatelessWidget {
@@ -29,8 +31,12 @@ class AppError extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        FaIcon(FontAwesomeIcons.circleExclamation, color: theme.colorScheme.error, size: 48),
-        const SizedBox(height: 16),
+        FaIcon(
+          FontAwesomeIcons.circleExclamation,
+          color: theme.colorScheme.error,
+          size: 48,
+        ),
+        AppSpacing.md.vSpace,
         Text(
           message,
           style: theme.textTheme.bodyLarge?.copyWith(
@@ -39,7 +45,7 @@ class AppError extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         if (onRetry != null) ...[
-          const SizedBox(height: 24),
+          AppSpacing.lg.vSpace,
           AppButton(
             text: context.l10n.common.retry,
             onPressed: onRetry,
@@ -50,10 +56,6 @@ class AppError extends StatelessWidget {
       ],
     );
 
-    if (isCentered) {
-      return Center(child: content);
-    }
-
-    return content;
+    return isCentered ? content.center : content;
   }
 }

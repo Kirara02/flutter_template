@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../core/extensions/context_ext.dart';
+import '../../core/extensions/widget_ext.dart';
+import '../../core/design_system/design_system.dart';
 
-enum AppButtonType { primary, secondary, outlined, text }
+enum AppButtonType { primary, secondary, outlined, text, error }
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -49,9 +52,14 @@ class AppButton extends StatelessWidget {
             children: [
               if (icon != null) ...[
                 FaIcon(icon, size: 18),
-                const SizedBox(width: 8),
+                AppSpacing.sm.hSpace,
               ],
-              Text(text),
+              Text(
+                text,
+                style: context.appTypography.labelLarge.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           );
 
@@ -64,6 +72,10 @@ class AppButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: theme.colorScheme.primary,
             foregroundColor: theme.colorScheme.onPrimary,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: context.radius.borderMd,
+            ),
           ),
           child: child,
         );
@@ -74,6 +86,24 @@ class AppButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: theme.colorScheme.secondaryContainer,
             foregroundColor: theme.colorScheme.onSecondaryContainer,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: context.radius.borderMd,
+            ),
+          ),
+          child: child,
+        );
+        break;
+      case AppButtonType.error:
+        button = ElevatedButton(
+          onPressed: isDisabled ? null : onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: context.appColors.error,
+            foregroundColor: context.colorScheme.onError,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: context.radius.borderMd,
+            ),
           ),
           child: child,
         );
@@ -81,12 +111,22 @@ class AppButton extends StatelessWidget {
       case AppButtonType.outlined:
         button = OutlinedButton(
           onPressed: isDisabled ? null : onPressed,
+          style: OutlinedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: context.radius.borderMd,
+            ),
+          ),
           child: child,
         );
         break;
       case AppButtonType.text:
         button = TextButton(
           onPressed: isDisabled ? null : onPressed,
+          style: TextButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: context.radius.borderMd,
+            ),
+          ),
           child: child,
         );
         break;

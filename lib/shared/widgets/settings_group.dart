@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
+import '../../core/extensions/context_ext.dart';
 
 class SettingsGroup extends StatelessWidget {
   final String title;

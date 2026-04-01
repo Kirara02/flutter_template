@@ -3,12 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../shared/widgets/shell/app_shell.dart';
-import 'package:kirara_template/features/home/presentation/screens/home/home_screen.dart';
-import 'package:kirara_template/features/settings/presentation/screens/more/more_screen.dart';
-import 'package:kirara_template/features/auth/presentation/screens/login/login_screen.dart';
-import 'package:kirara_template/features/auth/presentation/providers/auth_provider.dart';
-import 'package:kirara_template/features/settings/presentation/screens/about/about_screen.dart';
-import 'package:kirara_template/features/settings/presentation/screens/settings/settings_screen.dart';
+import '../../features/home/presentation/screens/home/home_screen.dart';
+import '../../features/settings/presentation/screens/more/more_screen.dart';
+import '../../features/auth/presentation/screens/login/login_screen.dart';
+import '../../features/auth/presentation/providers/auth_provider.dart';
+import '../../features/settings/presentation/screens/about/about_screen.dart';
+import '../../features/settings/presentation/screens/settings/settings_screen.dart';
 
 part 'app_router.g.dart';
 part 'sub_routes/auth_routes.dart';

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../core/design_system/design_system.dart';
+import '../../core/extensions/widget_ext.dart';
 
 class AppLoading extends StatelessWidget {
   const AppLoading({super.key, this.message, this.isCentered = true});
@@ -19,7 +21,7 @@ class AppLoading extends StatelessWidget {
       children: [
         const CircularProgressIndicator(),
         if (message != null) ...[
-          const SizedBox(height: 16),
+          AppSpacing.md.vSpace,
           Text(
             message!,
             style: theme.textTheme.bodyMedium?.copyWith(
@@ -31,10 +33,6 @@ class AppLoading extends StatelessWidget {
       ],
     );
 
-    if (isCentered) {
-      return Center(child: content);
-    }
-
-    return content;
+    return isCentered ? content.center : content;
   }
 }

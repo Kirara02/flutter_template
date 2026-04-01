@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/shared/widgets/app_button.dart';
-import 'package:kirara_template/shared/widgets/app_dialog.dart';
-import 'package:kirara_template/features/auth/presentation/providers/auth_controller.dart';
-import 'package:kirara_template/core/router/app_router.dart';
+import '../../../../../core/design_system/design_system.dart';
+import '../../../../../core/extensions/context_ext.dart';
+import '../../../../../core/extensions/widget_ext.dart';
+import '../../../../../shared/widgets/app_button.dart';
+import '../../../../../shared/widgets/app_dialog.dart';
+import '../../../../auth/presentation/providers/auth_controller.dart';
+import '../../../../../core/router/app_router.dart';
 
 class MoreScreen extends ConsumerWidget {
   const MoreScreen({super.key});
@@ -45,27 +47,24 @@ class MoreScreen extends ConsumerWidget {
             onTap: () => const AboutRoute().go(context),
           ),
           const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: AppButton(
-              type: AppButtonType.outlined,
-              text: context.l10n.common.logout,
-              isFullWidth: true,
-              isLoading: isLogoutLoading,
-              onPressed: () {
-                AppDialog.show(
-                  context,
-                  title: context.l10n.common.dialog.logoutTitle,
-                  description: context.l10n.common.dialog.logoutContent,
-                  confirmText: context.l10n.common.logout,
-                  isDanger: true,
-                  onConfirm: () {
-                    ref.read(authControllerProvider.notifier).logout();
-                  },
-                );
-              },
-            ),
-          ),
+          AppButton(
+            type: AppButtonType.outlined,
+            text: context.l10n.common.logout,
+            isFullWidth: true,
+            isLoading: isLogoutLoading,
+            onPressed: () {
+              AppDialog.show(
+                context,
+                title: context.l10n.common.dialog.logoutTitle,
+                description: context.l10n.common.dialog.logoutContent,
+                confirmText: context.l10n.common.logout,
+                isDanger: true,
+                onConfirm: () {
+                  ref.read(authControllerProvider.notifier).logout();
+                },
+              );
+            },
+          ).padAll(AppSpacing.md),
         ],
       ),
     );

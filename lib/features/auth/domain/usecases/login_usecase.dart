@@ -1,5 +1,5 @@
-import 'package:kirara_template/core/base/result.dart';
-import 'package:kirara_template/core/base/use_case.dart';
+import '../../../../core/base/result.dart';
+import '../../../../core/base/use_case.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/models/requests/login_request.dart';

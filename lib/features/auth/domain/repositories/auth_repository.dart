@@ -1,4 +1,4 @@
-import 'package:kirara_template/core/base/result.dart';
+import '../../../../core/base/result.dart';
 import '../entities/user.dart';
 import '../../data/models/requests/login_request.dart';
 

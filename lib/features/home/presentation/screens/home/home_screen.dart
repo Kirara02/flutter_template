@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/core/extensions/widget_ext.dart';
-import 'package:kirara_template/core/extensions/date_time_ext.dart';
-import 'package:kirara_template/core/base/result.dart';
-import 'package:kirara_template/shared/widgets/app_button.dart';
-import 'package:kirara_template/core/base/use_case.dart';
-import 'package:kirara_template/features/auth/domain/usecases/get_profile_usecase.dart';
-import 'package:kirara_template/features/auth/presentation/providers/auth_provider.dart';
+import '../../../../../core/extensions/context_ext.dart';
+import '../../../../../core/extensions/widget_ext.dart';
+import '../../../../../core/extensions/date_time_ext.dart';
+import '../../../../../core/base/result.dart';
+import '../../../../../shared/widgets/app_button.dart';
+import '../../../../../core/base/use_case.dart';
+import '../../../../auth/domain/usecases/get_profile_usecase.dart';
+import '../../../../auth/presentation/providers/auth_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -60,43 +60,41 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const FaIcon(FontAwesomeIcons.circleUser, size: 64),
-            16.vSpace,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const FaIcon(FontAwesomeIcons.circleUser, size: 64),
+          16.vSpace,
+          Text(
+            context.l10n.home.greeting(name: user?.name ?? 'User'),
+            style: context.textTheme.headlineMedium,
+          ),
+          8.vSpace,
+          if (user != null) ...[
             Text(
-              context.l10n.home.greeting(name: user?.name ?? 'User'),
-              style: context.textTheme.headlineMedium,
-            ),
-            8.vSpace,
-            if (user != null) ...[
-              Text(
-                '@${user.username}',
-                style: context.textTheme.bodyLarge?.copyWith(
-                  color: context.theme.hintColor,
-                ),
+              '@${user.username}',
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: context.theme.hintColor,
               ),
-              4.vSpace,
-              Chip(label: Text(user.role)),
-            ],
-            16.vSpace,
-            Text(
-              'Today is ${DateTime.now().format('EEEE, d MMMM yyyy')}',
-              style: context.textTheme.bodyLarge,
             ),
-            32.vSpace,
-            AppButton(
-              text: 'Refresh Profile',
-              icon: FontAwesomeIcons.arrowsRotate,
-              type: AppButtonType.outlined,
-              isLoading: _isRefreshing,
-              onPressed: _refreshUser,
-            ),
+            4.vSpace,
+            Chip(label: Text(user.role)),
           ],
-        ).paddingAll(24),
-      ),
+          16.vSpace,
+          Text(
+            'Today is ${DateTime.now().format('EEEE, d MMMM yyyy')}',
+            style: context.textTheme.bodyLarge,
+          ),
+          32.vSpace,
+          AppButton(
+            text: 'Refresh Profile',
+            icon: FontAwesomeIcons.arrowsRotate,
+            type: AppButtonType.outlined,
+            isLoading: _isRefreshing,
+            onPressed: _refreshUser,
+          ),
+        ],
+      ).padAll(24).center,
     );
   }
 }

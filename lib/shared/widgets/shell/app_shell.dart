@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/shared/widgets/app_dialog.dart';
+import '../../../core/extensions/context_ext.dart';
+import '../app_dialog.dart';
 
 class ShellScreen extends StatelessWidget {
   const ShellScreen({

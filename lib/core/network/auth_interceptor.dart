@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
-import 'package:kirara_template/core/auth/session_manager.dart';
-import 'package:kirara_template/core/auth/token_manager.dart';
+import '../auth/session_manager.dart';
+import '../auth/token_manager.dart';
 
 /// Interceptor that handles:
 /// 1. Attaching the access token to every request as a Bearer header.

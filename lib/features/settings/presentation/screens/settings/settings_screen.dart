@@ -1,10 +1,12 @@
-import 'package:kirara_template/core/extensions/string_ext.dart';
-import 'package:kirara_template/shared/i18n/locale_provider.dart';
-import 'package:kirara_template/shared/i18n/strings.g.dart';
-import 'package:kirara_template/core/theme/theme_provider.dart';
-import 'package:kirara_template/shared/widgets/app_selection_dialog.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/shared/widgets/settings_group.dart';
+import '../../../../../core/design_system/design_system.dart';
+import '../../../../../core/extensions/string_ext.dart';
+import '../../../../../core/extensions/widget_ext.dart';
+import '../../../../../shared/i18n/locale_provider.dart';
+import '../../../../../shared/i18n/strings.g.dart';
+import '../../../../../core/theme/theme_provider.dart';
+import '../../../../../shared/widgets/app_selection_dialog.dart';
+import '../../../../../core/extensions/context_ext.dart';
+import '../../../../../shared/widgets/settings_group.dart';
 import 'widgets/app_theme_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -110,15 +112,16 @@ class SettingsScreen extends ConsumerWidget {
                   },
                 ),
               ],
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                child: Text(
-                  context.l10n.settings.themeScheme,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
+              Text(
+                context.l10n.settings.themeScheme,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
                 ),
+              ).padOnly(
+                left: AppSpacing.md,
+                top: AppSpacing.md,
+                right: AppSpacing.md,
               ),
               const AppThemeSelector(),
             ],

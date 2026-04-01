@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kirara_template/core/extensions/build_context_ext.dart';
-import 'package:kirara_template/core/extensions/string_ext.dart';
-import 'package:kirara_template/core/extensions/widget_ext.dart';
-import 'package:kirara_template/core/router/app_router.dart';
-import 'package:kirara_template/shared/widgets/app_button.dart';
-import 'package:kirara_template/shared/widgets/app_dialog.dart';
-import 'package:kirara_template/shared/widgets/app_text_field.dart';
+import '../../../../../core/extensions/context_ext.dart';
+import '../../../../../core/extensions/string_ext.dart';
+import '../../../../../core/extensions/widget_ext.dart';
+import '../../../../../core/design_system/design_system.dart';
+import '../../../../../core/router/app_router.dart';
+import '../../../../../shared/widgets/app_button.dart';
+import '../../../../../shared/widgets/app_dialog.dart';
+import '../../../../../shared/widgets/app_text_field.dart';
 
 import '../../providers/auth_controller.dart';
 
@@ -76,76 +77,72 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         }
       },
       child: Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 400),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Center(
-                      child: FaIcon(
-                        FontAwesomeIcons.lock,
-                        size: 70,
-                        color: context.colorScheme.primary,
-                      ),
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 400),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  FaIcon(
+                    FontAwesomeIcons.lock,
+                    size: 70,
+                    color: context.colorScheme.primary,
+                  ).center,
+                  AppSpacing.xl.vSpace,
+                  Text(
+                    t.title,
+                    style: context.appTypography.headlineMedium.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
-                    32.vSpace,
-                    Text(
-                      t.title,
-                      style: context.textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
+                  ),
+                  AppSpacing.sm.vSpace,
+                  Text(
+                    t.subtitle,
+                    style: context.appTypography.bodyMedium.copyWith(
+                      color: context.appColors.textMuted,
                     ),
-                    8.vSpace,
-                    Text(
-                      t.subtitle,
-                      style: context.textTheme.bodyMedium?.copyWith(
-                        color: context.theme.hintColor,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    32.vSpace,
-                    AppTextField(
-                      controller: _usernameController,
-                      label: t.usernameLabel,
-                      hintText: t.usernameHint,
-                      prefixIcon: const FaIcon(FontAwesomeIcons.user, size: 18),
-                      keyboardType: TextInputType.name,
-                      validator: (val) {
-                        if (val.isNullOrEmpty) return t.errorEmpty;
-                        return null;
-                      },
-                    ),
-                    16.vSpace,
-                    AppTextField(
-                      controller: _passwordController,
-                      label: t.passwordLabel,
-                      hintText: t.passwordHint,
-                      prefixIcon: const FaIcon(FontAwesomeIcons.key, size: 18),
-                      obscureText: true,
-                      validator: (val) {
-                        if (val.isNullOrEmpty) return t.errorEmpty;
-                        return null;
-                      },
-                    ),
-                    32.vSpace,
-                    AppButton(
-                      text: t.button,
-                      onPressed: _handleLogin,
-                      isLoading: isLoading,
-                      isFullWidth: true,
-                    ),
-                  ],
-                ).paddingAll(24),
-              ),
+                    textAlign: TextAlign.center,
+                  ),
+                  AppSpacing.xl.vSpace,
+                  AppTextField(
+                    controller: _usernameController,
+                    label: t.usernameLabel,
+                    hintText: t.usernameHint,
+                    prefixIcon: const FaIcon(FontAwesomeIcons.user, size: 18),
+                    keyboardType: TextInputType.name,
+                    validator: (val) {
+                      if (val.isNullOrEmpty) return t.errorEmpty;
+                      return null;
+                    },
+                  ),
+                  AppSpacing.md.vSpace,
+                  AppTextField(
+                    controller: _passwordController,
+                    label: t.passwordLabel,
+                    hintText: t.passwordHint,
+                    prefixIcon: const FaIcon(FontAwesomeIcons.key, size: 18),
+                    obscureText: true,
+                    validator: (val) {
+                      if (val.isNullOrEmpty) return t.errorEmpty;
+                      return null;
+                    },
+                  ),
+                  AppSpacing.xl.vSpace,
+                  AppButton(
+                    text: t.button,
+                    onPressed: _handleLogin,
+                    isLoading: isLoading,
+                    isFullWidth: true,
+                  ),
+                ],
+              ).padAll(AppSpacing.lg),
             ),
           ),
-        ),
+        ).center,
       ),
     );
   }
