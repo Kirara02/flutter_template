@@ -9,4 +9,5 @@ abstract class IAuthRepository {
   Future<Result<User>> getProfile();
   Future<Result<void>> logout();
   Future<Result<void>> changePassword(ChangePasswordRequest request);
+  Future<Result<void>> updateAppToken(String appToken);
 }

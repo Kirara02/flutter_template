@@ -1,0 +1,30 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "anime-explorer-3452a",
+          "appId": "1:133249085983:android:9ce01cb0202611db1d5b2a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "anime-explorer-3452a",
+          "appId": "1:133249085983:ios:faf1c7de524833201d5b2a",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "anime-explorer-3452a",
+          "configurations": {
+            "android": "1:133249085983:android:9ce01cb0202611db1d5b2a",
+            "ios": "1:133249085983:ios:faf1c7de524833201d5b2a"
+          }
+        }
+      }
+    }
+  }
+}

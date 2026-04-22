@@ -54,11 +54,20 @@ Access the living documentation and execution state through these system artifac
    cp .env.example .env
    ```
 2. **Install & Generate**
+
    ```bash
    flutter pub get
    dart run slang
    dart run build_runner build -d
    ```
+
+3. **Firebase Setup (Required)**
+   Because Firebase configuration files are ignored by Git for security, you must initialize them:
+   - Ensure **FlutterFire CLI** is installed: `dart pub global activate flutterfire_cli`
+   - Run configuration:
+     ```bash
+     flutterfire configure
+     ```
 
 ---
 

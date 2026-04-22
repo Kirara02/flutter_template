@@ -17,10 +17,13 @@ This document explains the purpose of each directory in the **Flutter Premium Ba
 
 Shared infrastructure that rarely changes.
 
-- `auth/`: Authentication services and token management.
+- `auth/`: Authentication logic (SecureStorage, TokenManager, SessionManager).
+- `fcm/`: Firebase Cloud Messaging (FCM) service and token management.
+- `notification/`: Local notifications setup and background message handlers.
+- `services/`: External infrastructure and third-party services.
 - `base/`: Base classes like `UseCase` and `Result`.
 - `design_system/`: Tokens for colors, spacing, and typography.
-- `error/`: centralized error handling and exceptions.
+- `error/`: Centralized error handling and exceptions.
 - `extensions/`: Widget, Context, and Data type extensions.
 - `network/`: Dio client, interceptors, and API helpers.
 - `router/`: GoRouter setup and route definitions.
@@ -66,6 +69,9 @@ To add a new feature "Profile":
 lib/
 ├── core/
 │   ├── auth/                 # SecureStorageService, TokenManager, SessionManager
+│   ├── fcm/                  # FCMService, AppToken management
+│   ├── notification/         # Local Notifications, Background Handlers
+│   ├── services/             # External third-party integrations
 │   ├── base/                 # UseCase, Result types
 │   ├── design_system/        # AppColors, AppSpacing, AppRadius, AppTypography
 │   ├── error/                # Custom AppException hierarchy

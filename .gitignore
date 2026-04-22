@@ -56,3 +56,9 @@ docs/requirements.md
 docs/requirements_*.md
 docs/implementation_plan.md
 docs/walkthrough.md
+
+# Firebase Configuration
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+.firebaserc

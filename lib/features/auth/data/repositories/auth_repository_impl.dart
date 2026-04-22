@@ -77,12 +77,24 @@ class AuthRepositoryImpl implements IAuthRepository {
 
     return switch (result) {
       Success(:final message) => Success(null, message: message),
-      Failure() => const Success(null), // treat as success — local state is cleared
+      Failure() => const Success(
+        null,
+      ), // treat as success — local state is cleared
     };
   }
 
   @override
   Future<Result<void>> changePassword(ChangePasswordRequest request) async {
     return _remoteDataSource.changePassword(request.toMap());
+  }
+
+  @override
+  Future<Result<void>> updateAppToken(String appToken) async {
+    final result = await _remoteDataSource.updateAppToken(appToken);
+
+    return switch (result) {
+      Success(:final message) => Success(null, message: message),
+      Failure(:final error, :final stackTrace) => Failure(error, stackTrace),
+    };
   }
 }

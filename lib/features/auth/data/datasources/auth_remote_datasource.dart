@@ -17,6 +17,8 @@ abstract class AuthRemoteDataSource {
   Future<Result<Map<String, dynamic>>> logout();
 
   Future<Result<void>> changePassword(Map<String, dynamic> requestData);
+
+  Future<Result<Map<String, dynamic>>> updateAppToken(String appToken);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -65,6 +67,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     return safeApiCall(
       () => _dio.put('/api/auth/change-password', data: requestData),
       mapper: (_) {},
+    );
+  }
+
+  @override
+  Future<Result<Map<String, dynamic>>> updateAppToken(String appToken) async {
+    return safeApiCall(
+      () => _dio.put('/api/auth/app-token', data: {'app_token': appToken}),
+      mapper: (data) => data,
     );
   }
 }
