@@ -21,8 +21,10 @@ class LoginUseCase implements UseCase<User, LoginRequest> {
 
   @override
   Future<Result<User>> call(LoginRequest request) {
-    if (request.username.isEmpty || request.password.isEmpty) {
-      return Future.value(Result.failure(Exception('Email and password must not be empty')));
+    if (request.identity.isEmpty || request.password.isEmpty) {
+      return Future.value(
+        Result.failure(Exception('Identity and password must not be empty')),
+      );
     }
 
     return _repository.login(request);

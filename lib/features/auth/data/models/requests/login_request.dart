@@ -1,10 +1,10 @@
 class LoginRequest {
-  final String username;
+  final String identity;
   final String password;
 
-  const LoginRequest({required this.username, required this.password});
+  const LoginRequest({required this.identity, required this.password});
 
   Map<String, dynamic> toMap() {
-    return {'username': username, 'password': password};
+    return {'identity': identity, 'password': password};
   }
 }

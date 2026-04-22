@@ -9,5 +9,6 @@ abstract class User with _$User {
     required String name,
     required String username,
     required String role,
+    required bool hasPassword,
   }) = _User;
 }

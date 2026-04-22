@@ -9,6 +9,7 @@ import '../../features/auth/presentation/screens/login/login_screen.dart';
 import '../../features/auth/presentation/providers/auth_provider.dart';
 import '../../features/settings/presentation/screens/about/about_screen.dart';
 import '../../features/settings/presentation/screens/settings/settings_screen.dart';
+import '../../features/auth/presentation/screens/change_password/change_password_screen.dart';
 
 part 'app_router.g.dart';
 part 'sub_routes/auth_routes.dart';
@@ -29,6 +30,7 @@ abstract class Routes {
   static const more = 'more';
   static const about = 'about';
   static const settings = 'settings';
+  static const changePassword = 'change-password';
 }
 
 @riverpod
@@ -88,7 +90,14 @@ GoRouter routerConfig(Ref ref) {
               path: Routes.more,
               routes: [
                 TypedGoRoute<AboutRoute>(path: Routes.about),
-                TypedGoRoute<SettingsRoute>(path: Routes.settings),
+                TypedGoRoute<SettingsRoute>(
+                  path: Routes.settings,
+                  routes: [
+                    TypedGoRoute<ChangePasswordRoute>(
+                      path: Routes.changePassword,
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

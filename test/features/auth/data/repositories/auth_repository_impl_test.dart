@@ -21,7 +21,7 @@ void main() {
     repository = AuthRepositoryImpl(mockRemoteDataSource, mockLocalDataSource);
   });
 
-  const testLoginRequest = LoginRequest(username: 'test', password: 'password');
+  const testLoginRequest = LoginRequest(identity: 'test', password: 'password');
   final testResponse = {
     'access_token': 'access',
     'refresh_token': 'refresh',
@@ -30,6 +30,7 @@ void main() {
       'name': 'Test',
       'username': 'test',
       'role': 'User',
+      'has_password': true,
     }
   };
 

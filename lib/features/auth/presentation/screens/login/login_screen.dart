@@ -21,13 +21,13 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _usernameController = TextEditingController();
+  final _identityController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _identityController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -38,7 +38,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     ref
         .read(authControllerProvider.notifier)
-        .login(_usernameController.text, _passwordController.text);
+        .login(_identityController.text, _passwordController.text);
   }
 
   @override
@@ -109,11 +109,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                   AppSpacing.xl.vSpace,
                   AppTextField(
-                    controller: _usernameController,
-                    label: t.usernameLabel,
-                    hintText: t.usernameHint,
+                    controller: _identityController,
+                    label: t.identityLabel,
+                    hintText: t.identityHint,
                     prefixIcon: const FaIcon(FontAwesomeIcons.user, size: 18),
-                    keyboardType: TextInputType.name,
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
                     validator: (val) {
                       if (val.isNullOrEmpty) return t.errorEmpty;
                       return null;
@@ -126,6 +127,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     hintText: t.passwordHint,
                     prefixIcon: const FaIcon(FontAwesomeIcons.key, size: 18),
                     obscureText: true,
+                    textInputAction: TextInputAction.done,
+                    onFieldSubmitted: (_) => _handleLogin(),
                     validator: (val) {
                       if (val.isNullOrEmpty) return t.errorEmpty;
                       return null;
@@ -135,6 +138,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   AppButton(
                     text: t.button,
                     onPressed: _handleLogin,
+                    isLoading: isLoading,
+                    isFullWidth: true,
+                  ),
+                  AppSpacing.lg.vSpace,
+                  Row(
+                    children: [
+                      const Expanded(child: Divider()),
+                      AppSpacing.md.hSpace,
+                      Text(
+                        'OR',
+                        style: context.appTypography.bodySmall.copyWith(
+                          color: context.appColors.textMuted,
+                        ),
+                      ),
+                      AppSpacing.md.hSpace,
+                      const Expanded(child: Divider()),
+                    ],
+                  ),
+                  AppSpacing.lg.vSpace,
+                  AppButton(
+                    text: t.googleButton,
+                    type: AppButtonType.outlined,
+                    icon: FontAwesomeIcons.google,
+                    onPressed: () => ref
+                        .read(authControllerProvider.notifier)
+                        .signInWithGoogle(),
                     isLoading: isLoading,
                     isFullWidth: true,
                   ),

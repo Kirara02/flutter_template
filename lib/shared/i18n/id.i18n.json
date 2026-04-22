@@ -2,11 +2,12 @@
   "login": {
     "title": "Selamat Datang Kembali",
     "subtitle": "Silakan masuk untuk melanjutkan",
-    "usernameLabel": "Nama Pengguna",
-    "usernameHint": "Masukkan nama pengguna Anda",
+    "identityLabel": "Username atau Email",
+    "identityHint": "Masukkan username atau email Anda",
     "passwordLabel": "Kata Sandi",
     "passwordHint": "Masukkan kata sandi Anda",
     "button": "Masuk",
+    "googleButton": "Masuk dengan Google",
     "errorEmpty": "Kolom ini tidak boleh kosong"
   },
   "home": {
@@ -46,7 +47,20 @@
     "themeScheme": "Skema Tema",
     "themeSystem": "Sistem",
     "themeLight": "Terang",
-    "themeDark": "Gelap"
+    "themeDark": "Gelap",
+    "account": "Akun",
+    "changePassword": "Ubah Kata Sandi"
+  },
+  "auth": {
+    "oldPasswordLabel": "Kata Sandi Lama",
+    "oldPasswordHint": "Masukkan kata sandi lama Anda",
+    "newPasswordLabel": "Kata Sandi Baru",
+    "newPasswordHint": "Masukkan kata sandi baru Anda",
+    "confirmPasswordLabel": "Konfirmasi Kata Sandi",
+    "confirmPasswordHint": "Masukkan ulang kata sandi baru Anda",
+    "changePasswordButton": "Perbarui Kata Sandi",
+    "passwordsDoNotMatch": "Kata sandi tidak cocok",
+    "changePasswordSuccess": "Kata sandi berhasil diubah"
   },
   "common": {
     "appTitle": "Templat App",

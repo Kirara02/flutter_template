@@ -1,6 +1,7 @@
 import '../../../../../core/design_system/design_system.dart';
 import '../../../../../core/extensions/string_ext.dart';
 import '../../../../../core/extensions/widget_ext.dart';
+import '../../../../../core/router/app_router.dart';
 import '../../../../../shared/i18n/locale_provider.dart';
 import '../../../../../shared/i18n/strings.g.dart';
 import '../../../../../core/theme/theme_provider.dart';
@@ -55,6 +56,18 @@ class SettingsScreen extends ConsumerWidget {
                   if (newLocale != null) {
                     ref.read(localeProvider.notifier).setLocale(newLocale);
                   }
+                },
+              ),
+            ],
+          ),
+          SettingsGroup(
+            title: context.l10n.settings.account,
+            children: [
+              ListTile(
+                title: Text(context.l10n.settings.changePassword),
+                leading: const FaIcon(FontAwesomeIcons.key, size: 20),
+                onTap: () {
+                  const ChangePasswordRoute().push(context);
                 },
               ),
             ],

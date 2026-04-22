@@ -13,7 +13,15 @@ class UserDto extends MapSerializable {
 
   String get role => this['role'] as String;
 
+  bool get hasPassword => this['has_password'] as bool? ?? true;
+
   User toDomain() {
-    return User(id: id, name: name, username: username, role: role);
+    return User(
+      id: id,
+      name: name,
+      username: username,
+      role: role,
+      hasPassword: hasPassword,
+    );
   }
 }

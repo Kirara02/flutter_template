@@ -3,6 +3,7 @@ import '../../../../core/base/result.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../models/requests/login_request.dart';
+import '../models/requests/change_password_request.dart';
 import '../models/user_model.dart';
 import '../datasources/auth_remote_datasource.dart';
 import '../datasources/auth_local_datasource.dart';
@@ -26,7 +27,18 @@ class AuthRepositoryImpl implements IAuthRepository {
   @override
   Future<Result<User>> login(LoginRequest request) async {
     final result = await _remoteDataSource.login(request.toMap());
+    return _handleAuthResult(result);
+  }
 
+  @override
+  Future<Result<User>> signInWithGoogle(String idToken) async {
+    final result = await _remoteDataSource.googleLogin({'id_token': idToken});
+    return _handleAuthResult(result);
+  }
+
+  Future<Result<User>> _handleAuthResult(
+    Result<Map<String, dynamic>> result,
+  ) async {
     switch (result) {
       case Success(data: final payload):
         final token = payload['access_token'] as String?;
@@ -67,5 +79,10 @@ class AuthRepositoryImpl implements IAuthRepository {
       Success(:final message) => Success(null, message: message),
       Failure() => const Success(null), // treat as success — local state is cleared
     };
+  }
+
+  @override
+  Future<Result<void>> changePassword(ChangePasswordRequest request) async {
+    return _remoteDataSource.changePassword(request.toMap());
   }
 }

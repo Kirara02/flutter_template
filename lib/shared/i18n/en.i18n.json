@@ -2,11 +2,12 @@
   "login": {
     "title": "Welcome Back",
     "subtitle": "Please sign in to continue",
-    "usernameLabel": "Username",
-    "usernameHint": "Enter your username",
+    "identityLabel": "Username or Email",
+    "identityHint": "Enter your username or email",
     "passwordLabel": "Password",
     "passwordHint": "Enter your password",
     "button": "Sign In",
+    "googleButton": "Sign in with Google",
     "errorEmpty": "This field cannot be empty"
   },
   "home": {
@@ -46,7 +47,20 @@
     "themeScheme": "Theme Scheme",
     "themeSystem": "System",
     "themeLight": "Light",
-    "themeDark": "Dark"
+    "themeDark": "Dark",
+    "account": "Account",
+    "changePassword": "Change Password"
+  },
+  "auth": {
+    "oldPasswordLabel": "Old Password",
+    "oldPasswordHint": "Enter your current password",
+    "newPasswordLabel": "New Password",
+    "newPasswordHint": "Enter your new password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordHint": "Confirm your new password",
+    "changePasswordButton": "Update Password",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "changePasswordSuccess": "Password changed successfully"
   },
   "common": {
     "appTitle": "Template App",

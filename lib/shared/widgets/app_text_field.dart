@@ -18,6 +18,8 @@ class AppTextField extends StatefulWidget {
     this.suffixIcon,
     this.maxLines = 1,
     this.enabled = true,
+    this.textInputAction,
+    this.onFieldSubmitted,
   });
 
   final TextEditingController? controller;
@@ -31,6 +33,8 @@ class AppTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final int maxLines;
   final bool enabled;
+  final TextInputAction? textInputAction;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -50,10 +54,12 @@ class _AppTextFieldState extends State<AppTextField> {
     return TextFormField(
       controller: widget.controller,
       keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onFieldSubmitted,
       obscureText: _obscureText,
       validator: widget.validator,
       onChanged: widget.onChanged,
-      maxLines: widget.maxLines,
+      maxLines: widget.obscureText ? 1 : widget.maxLines,
       enabled: widget.enabled,
       decoration: InputDecoration(
         labelText: widget.label,
@@ -66,6 +72,7 @@ class _AppTextFieldState extends State<AppTextField> {
                 width: 48,
                 height: 48,
                 child: IconButton(
+                  focusNode: FocusNode(skipTraversal: true),
                   onPressed: () => setState(() => _obscureText = !_obscureText),
                   icon: FaIcon(
                     _obscureText

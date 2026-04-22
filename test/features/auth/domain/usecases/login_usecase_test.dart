@@ -17,8 +17,8 @@ void main() {
     useCase = LoginUseCase(mockRepository);
   });
 
-  const testRequest = LoginRequest(username: 'test', password: 'password');
-  const testUser = User(id: 1, name: 'Test', username: 'test', role: 'User');
+  const testRequest = LoginRequest(identity: 'test', password: 'password');
+  const testUser = User(id: 1, name: 'Test', username: 'test', role: 'User', hasPassword: true);
 
   test('should return Success when repository login status is success', () async {
     // arrange
@@ -37,7 +37,7 @@ void main() {
 
   test('should return Failure when username is empty', () async {
     // arrange
-    const emptyRequest = LoginRequest(username: '', password: 'password');
+    const emptyRequest = LoginRequest(identity: '', password: 'password');
 
     // act
     final result = await useCase(emptyRequest);

@@ -9,6 +9,7 @@ void main() {
         name: 'John Doe',
         username: 'johndoe',
         role: 'admin',
+        hasPassword: true,
       );
 
       expect(user.id, 1);
@@ -23,12 +24,14 @@ void main() {
         name: 'John Doe',
         username: 'johndoe',
         role: 'admin',
+        hasPassword: true,
       );
       const user2 = User(
         id: 1,
         name: 'John Doe',
         username: 'johndoe',
         role: 'admin',
+        hasPassword: true,
       );
 
       expect(user1, equals(user2));
