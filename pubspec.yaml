@@ -26,7 +26,7 @@ dependencies:
   slang_flutter: ^4.12.1
   flex_color_scheme: ^8.4.0
   google_fonts: ^8.0.2
-  dropdown_search: ^6.0.2
+  dropdown_search: ^7.0.0
   package_info_plus: ^9.0.0
   flutter_secure_storage: ^10.0.0
   google_sign_in: ^7.2.0

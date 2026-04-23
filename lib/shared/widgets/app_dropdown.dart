@@ -9,7 +9,7 @@ class AppDropdown<T> extends StatelessWidget {
     super.key,
     required this.items,
     this.selectedItem,
-    this.onChanged,
+    this.onSelected,
     this.itemAsString,
     this.label,
     this.hintText,
@@ -20,7 +20,7 @@ class AppDropdown<T> extends StatelessWidget {
 
   final List<T> items;
   final T? selectedItem;
-  final void Function(T?)? onChanged;
+  final void Function(T?)? onSelected;
   final String Function(T)? itemAsString;
   final String? label;
   final String? hintText;
@@ -31,10 +31,10 @@ class AppDropdown<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownSearch<T>(
-      items: (filter, loadProps) => items, // DropdownSearch 6.x signature
+      items: (filter, loadProps) => items,
       selectedItem: selectedItem,
       itemAsString: itemAsString,
-      onChanged: onChanged,
+      onSelected: onSelected,
       validator: validator,
       enabled: enabled,
       decoratorProps: DropDownDecoratorProps(
