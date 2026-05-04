@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
-import '../auth/session_manager.dart';
-import '../auth/token_manager.dart';
+import '../../auth/session_manager.dart';
+import '../../auth/token_manager.dart';
 
 /// Interceptor that handles:
 /// 1. Attaching the access token to every request as a Bearer header.
@@ -25,7 +25,7 @@ class AuthInterceptor extends Interceptor {
   // Guards against concurrent refresh calls when multiple requests 401 at once.
   bool _isRefreshing = false;
   final List<({RequestOptions options, ErrorInterceptorHandler handler})>
-      _pendingRequests = [];
+  _pendingRequests = [];
 
   AuthInterceptor(
     this._tokenManager,

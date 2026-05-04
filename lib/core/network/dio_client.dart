@@ -4,10 +4,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../auth/session_manager.dart';
 import '../auth/token_manager.dart';
 import '../logger/logger_provider.dart';
-import 'auth_interceptor.dart';
-// ignore: implementation_imports
 import '../../features/auth/presentation/providers/auth_provider.dart';
-
+import 'interceptors/auth_interceptor.dart';
+import 'interceptors/signature_interceptor.dart';
 part 'dio_client.g.dart';
 
 @Riverpod(keepAlive: true)
@@ -49,6 +48,9 @@ Dio dio(Ref ref) {
       },
     ),
   );
+
+  // Request Signature Interceptor
+  dio.interceptors.add(SignatureInterceptor());
 
   // Logging interceptor
   dio.interceptors.add(
